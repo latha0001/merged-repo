@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheTop36 - Entry Confirmed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="optout.css">
+
+</head>
+
+<body>
+    <header>
+        <a href="home.html" class="logo">thetop36</a>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="#" class="active">Opt-Out</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        <section class="confirmation-message">
+            <h2>Your entry is confirmed!</h2>
+            <p>You are now locked into the client ecosystem for 45 days and are eligible for the 1-in-100 micro-lottery.
+            </p>
+            <p>We appreciate your support and hope you enjoy your knowledge bundles.</p>
+        </section>
+
+        <div class="content-sections-container">
+            <div class="raffle-ticket">
+                <div class="ticket-top">Raffle Entry #</div>
+                <div class="ticket-number">12345</div>
+                <div class="ticket-bottom">Good Luck!</div>
+            </div>
+
+            <div class="raffle-ticket">
+                <div class="ticket-top">Raffle Entry #</div>
+                <div class="ticket-number">67890</div>
+                <div class="ticket-bottom">Thanks for Playing!</div>
+            </div>
+
+            <div class="spinner-container">
+                <div class="spinner"></div>
+                <p>Drawing Soon...</p>
+            </div>
+
+            <div class="mystery-box-wrapper">
+                <div class="mystery-box">
+                    <div class="box-top"></div>
+                    <div class="box-front"></div>
+                    <div class="box-side"></div>
+                    <div class="question-mark">?</div>
+                </div>
+                <button class="reveal-button">Reveal Prize!</button>
+            </div>
+        </div>
+
+        <section class="engagement-questions">
+            <h3>Optional Engagement Questions</h3>
+            <p>Your feedback helps us improve. (Not mandatory to answer)</p>
+
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="question1">1. I think TheTop36 means...</label>
+                    <textarea id="question1" name="theTop36Meaning" rows="3"
+                        placeholder="Share your thoughts..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="question2">2. Recommend a raffle item you'd love to win</label>
+                    <input type="text" id="question2" name="raffleRecommendation"
+                        placeholder="e.g., A luxury travel package, latest tech gadget...">
+                </div>
+
+                <button type="submit" class="button">Submit Feedback</button>
+            </form>
+
+            <div id="feedbackMessage" class="feedback-message"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Alatree Ventures. All rights reserved.</p>
+    </footer>
+
+    <div id="optOutPopupOverlay" class="opt-out-popup-overlay">
+        <div class="opt-out-card">
+            <h2>Opt-Out Confirmation</h2>
+            <p>You are about to opt out of TheTop36 ecosystem. This action is irreversible.</p>
+            <p>Please confirm your decision within the next <span id="countdown">30</span> seconds.</p>
+            <div class="popup-buttons">
+                <button id="cancelButton" class="btn secondary">Stay In</button>
+                <button id="optOutButton" class="btn primary" disabled>Confirm Opt-Out</button>
+            </div>
+            <p id="optOutMessage" class="hidden"></p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.reveal-button').addEventListener('click', function () {
+            const box = document.querySelector('.mystery-box');
+            box.classList.toggle('revealed');
+            if (box.classList.contains('revealed')) {
+                this.textContent = 'Hide Prize';
+            } else {
+                this.textContent = 'Reveal Prize!';
+            }
+        });
+
+        document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const message = document.getElementById('feedbackMessage');
+            message.textContent = 'Thank you for your feedback!';
+            message.style.color = 'green';
+            this.reset();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const optOutPopupOverlay = document.getElementById('optOutPopupOverlay');
+            const countdownElement = document.getElementById('countdown');
+            const optOutButton = document.getElementById('optOutButton');
+            const cancelButton = document.getElementById('cancelButton');
+            const optOutMessageElement = document.getElementById('optOutMessage');
+            const optOutNavLink = document.querySelector('nav a[href="#"].active');
+
+            let timeLeft = 30;
+            let countdownInterval;
+
+            const showOptOutPopup = () => {
+                optOutPopupOverlay.classList.add('show');
+                timeLeft = 30;
+                countdownElement.textContent = timeLeft;
+                optOutButton.disabled = true;
+                optOutMessageElement.classList.add('hidden');
+                optOutMessageElement.classList.remove('error');
+                startOptOutCountdown();
+            };
+
+            const hideOptOutPopup = () => {
+                optOutPopupOverlay.classList.remove('show');
+                clearInterval(countdownInterval);
+            };
+
+            const startOptOutCountdown = () => {
+                clearInterval(countdownInterval);
+                countdownInterval = setInterval(() => {
+                    timeLeft--;
+                    countdownElement.textContent = timeLeft;
+
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownInterval);
+                        optOutButton.disabled = true;
+                        optOutMessageElement.classList.remove('hidden');
+                        optOutMessageElement.classList.add('error');
+                        optOutMessageElement.textContent = "Time expired. You can no longer confirm your opt-out through this page.";
+                    } else if (timeLeft <= 20 && optOutButton.disabled) {
+                        optOutButton.disabled = false;
+                    }
+                }, 1000);
+            };
+
+            setTimeout(showOptOutPopup, 9000);
+
+            optOutButton.addEventListener('click', () => {
+                if (!optOutButton.disabled) {
+                    clearInterval(countdownInterval);
+                    optOutMessageElement.classList.remove('hidden');
+                    optOutMessageElement.classList.remove('error');
+                    optOutMessageElement.textContent = "You have successfully opted out. Thank you.";
+                    optOutButton.disabled = true;
+                    cancelButton.disabled = true;
+                    setTimeout(hideOptOutPopup, 3000);
+                }
+            });
+
+            cancelButton.addEventListener('click', () => {
+                clearInterval(countdownInterval);
+                optOutMessageElement.classList.remove('hidden');
+                optOutMessageElement.classList.remove('error');
+                optOutMessageElement.textContent = "You have chosen to stay in TheTop36 ecosystem. Closing pop-up...";
+                optOutButton.disabled = true;
+                cancelButton.disabled = true;
+                setTimeout(hideOptOutPopup, 2000);
+            });
+
+            if (optOutNavLink) {
+                optOutNavLink.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    showOptOutPopup();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

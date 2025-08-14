@@ -1,0 +1,304 @@
+:root {
+    --primary-dark: #1C1C1C;
+    --accent-gold: #D4AF37;
+    --background-color: #FAFAFA;
+    --border-radius: 8px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--primary-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'DM Serif Display', serif;
+    color: var(--primary-dark);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--primary-dark);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 2.8em;
+    font-weight: normal;
+    color: var(--accent-gold);
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--background-color);
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--accent-gold);
+}
+
+.hero-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+}
+
+.hero-tagline {
+    font-size: 3.8em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.hero-description {
+    font-size: 1.2em;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.cta-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.raffle-countdown {
+    background-color: var(--primary-dark);
+    color: var(--background-color);
+    padding: 20px 30px;
+    border-radius: 8px;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-label {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.countdown-timer {
+    font-size: 2.8em;
+    font-weight: 700;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.countdown-value {
+    color: var(--accent-gold);
+}
+
+.countdown-unit {
+    font-size: 0.4em;
+    align-self: flex-end;
+    margin-left: -10px;
+    opacity: 0.7;
+}
+
+.join-list-form {
+    width: 100%;
+    max-width: 500px;
+}
+
+#joinListForm {
+    display: flex;
+    gap: 10px;
+}
+
+#emailInput {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    color: var(--primary-dark);
+    background-color: #f8f8f8;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#emailInput::placeholder {
+    color: #aaa;
+}
+
+#emailInput:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+}
+
+.button {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.button:hover {
+    background-color: #c09f2d;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+footer {
+    width: 100%;
+    background-color: var(--primary-dark);
+    color: var(--background-color);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+@media (max-width: 992px) {
+    .hero-tagline {
+        font-size: 3em;
+    }
+
+    .countdown-timer {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px 0;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero-section {
+        padding: 40px 15px;
+        margin-bottom: 40px;
+    }
+
+    .hero-tagline {
+        font-size: 2.5em;
+    }
+
+    .hero-description {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+
+    .raffle-countdown {
+        padding: 15px 20px;
+    }
+
+    .countdown-timer {
+        font-size: 2em;
+    }
+
+    #joinListForm {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #emailInput,
+    .button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 2em;
+    }
+
+    nav a {
+        font-size: 0.9em;
+    }
+
+    .hero-tagline {
+        font-size: 1.8em;
+    }
+
+    .hero-description {
+        font-size: 0.95em;
+    }
+
+    .countdown-timer {
+        font-size: 1.5em;
+    }
+
+    .countdown-unit {
+        font-size: 0.35em;
+    }
+}

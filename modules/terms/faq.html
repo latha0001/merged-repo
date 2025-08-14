@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheTop36 - FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="faq.css">
+
+</head>
+
+<body>
+    <header>
+        <a href="Index.html" class="logo">thetop36</a>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="optout.html">Opt-Out</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content-container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-section">
+            <div class="faq-item">
+                <div class="faq-question">What is TheTop36 ecosystem?</div>
+                <div class="faq-answer">
+                    TheTop36 ecosystem is a client engagement and rewards program designed to provide exclusive
+                    knowledge bundles and opportunities for participants to engage in micro-lotteries and other
+                    interactive features.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I become part of TheTop36?</div>
+                <div class="faq-answer">
+                    Participation typically begins when you engage with one of our client partners and confirm your
+                    entry. This usually locks you into the ecosystem for a specified period, making you eligible for
+                    benefits.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What are "knowledge bundles"?</div>
+                <div class="faq-answer">
+                    Knowledge bundles are curated sets of information, resources, or content designed to provide value
+                    and insights on various topics relevant to our participants.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How does the 1-in-100 micro-lottery work?</div>
+                <div class="faq-answer">
+                    Every participant in TheTop36 ecosystem is automatically entered into our micro-lottery system.
+                    For every 100 entries, one participant is randomly selected to win a prize. Winners are notified
+                    directly.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I opt out of TheTop36 ecosystem?</div>
+                <div class="faq-answer">
+                    Yes, you can opt out at any time. Please visit our "Opt-Out" page for instructions and to confirm
+                    your decision. Be aware that opting out is irreversible and you will forfeit any ongoing benefits.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How long am I locked into the ecosystem?</div>
+                <div class="faq-answer">
+                    Your entry typically locks you into the ecosystem for 45 days. During this period, you remain
+                    eligible for all benefits and lotteries unless you choose to opt out.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TheTop36. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                button.classList.toggle('active');
+                if (button.classList.contains('active')) {
+                    answer.classList.add('show');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = "0";
+                    answer.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

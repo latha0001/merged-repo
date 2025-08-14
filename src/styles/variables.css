@@ -1,0 +1,29 @@
+:root {
+  /* Brand Colors */
+  --primary-color: #111D5E;
+  --accent-color: #FF7A00;
+  --background-color: #F1F5FB;
+  
+  /* Typography */
+  --font-stack: "Inter", "Helvetica Neue", Arial, sans-serif;
+  
+  /* Spacing Scale (4-pt grid) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* Border Radius */
+  --border-radius: 8px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+} 
